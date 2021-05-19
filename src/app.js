@@ -82,13 +82,13 @@ streetListElement.addEventListener('click', (e) => {
   if (e.target.tagName === 'A') {
     const streetKey = e.target.dataset.streetKey;
     document.getElementById('street-name').innerHTML = "Displaying results for " + e.target.outerText;
-    populateBusStops(streetKey);
+    allBusStops(streetKey);
   }
 });
 
 
 // populate bus stop using api stop
-const populateBusStops = function(streetKey) {
+const allBusStops = function(streetKey) {
  
   fetch(`${baseUrl}stops.json?api-key=${APIKey}&street=${streetKey}`)
   .then(stopsRespose => stopsRespose.json())
