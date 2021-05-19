@@ -116,7 +116,7 @@ const addDataToHtml = jsonData => {
   tbodyElem.innerHTML = '';
   Promise.all(stopSchedules(jsonData))
     .then(response => {
-       str = ``;
+      let str = ``;
 
       response.forEach(e => {
         if(e['stop-schedule']['route-schedules'].length > 0) {
