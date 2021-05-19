@@ -35,7 +35,7 @@ const getroads = async function(string) {
 
 
 // get stops and return json data
-const getStops = async function(streetKey) {
+const getStopages = async function(streetKey) {
   const response = await fetch(`${baseUrl}stops.json?api-key=${APIKey}&street=${streetKey}`);
   const data = await response.json();
   return data;
@@ -43,7 +43,7 @@ const getStops = async function(streetKey) {
 
 
 // get street list and add html
-const getStreetLink = function(street) {
+const getRoadLink = function(street) {
   if(street.leg) return `<a href="#" data-street-key="${street.key}">${street.name} ${street.leg}</a>`;
   else return `<a href="#" data-street-key="${street.key}">${street.name}</a>`;
 }
@@ -53,7 +53,7 @@ const getStreetLink = function(street) {
 const EveryStreetList = function(streets) {
   streetListElement.innerHTML = '';
   for (let street of streets) {
-    streetListElement.innerHTML += getStreetLink(street);
+    streetListElement.innerHTML += getRoadLink(street);
   }
   if(streets.length == 0) streetListElement.innerHTML = 'No Streets found';
 };
